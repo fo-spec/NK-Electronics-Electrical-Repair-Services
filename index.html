@@ -21,6 +21,16 @@
     nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
     nav ul li a:hover { color: #facc15; }
 
+    /* Hamburger button (mobile only) */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+      background: none;
+      border: none;
+    }
+
     /* Hero */
     header {
       background: linear-gradient(to right, #2563eb, #facc15);
@@ -49,7 +59,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s ease;
     }
     .card:hover { transform: translateY(-5px); }
-    .card img { width: 200px; margin-bottom: 15px; }
+    .card img { max-width: 100%; height: auto; margin-bottom: 15px; }
 
     /* Steps */
     .steps { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
@@ -66,53 +76,51 @@
     }
     .testimonial p { font-style: italic; margin-bottom: 10px; }
 
-    /* Contact */
-    <!-- Contact -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-form">
-    <p>📞 Call us: <a href="tel:+919665345409" style="color:#2563eb; font-weight:bold;">+91 96653 45409</a></p>
-    <br>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:20px;">
+    /* Contact Buttons */
+    .contact-buttons {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 15px; margin-top: 20px;
+    }
+    .contact-buttons a {
+      padding: 14px 25px; border-radius: 40px; text-decoration: none;
+      font-weight: bold; font-size: 16px; display: flex; align-items: center; gap: 8px;
+      color: white;
+    }
+    .btn-call { background:#2563eb; }
+    .btn-wa { background:#25D366; }
+    .btn-sms { background:#ff9800; }
 
-      <!-- Call Button -->
-      <a href="tel:+919665345409" 
-         style="background:#2563eb; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         📞 Call Now
-      </a>
+    /* Floating WhatsApp */
+    .float-wa {
+      position: fixed; bottom: 20px; right: 20px; background: #25D366;
+      color: white; padding: 14px 20px; border-radius: 50px;
+      text-decoration: none; font-weight: bold; font-size:16px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2); display:flex; align-items:center; gap:6px;
+    }
 
-      <!-- WhatsApp Button -->
-      <a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" 
-         target="_blank"
-         style="background:#25D366; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         💬 WhatsApp
-      </a>
-
-      <!-- SMS Button -->
-      <a href="sms:+919665345409?body=Hello!%20I%20need%20repair%20service" 
-         style="background:#ff9800; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         📩 Send SMS
-      </a>
-
-    </div>
-  </div>
-</section>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" 
-   target="_blank"
-   style="position: fixed; bottom: 20px; right: 20px; background: #25D366; 
-          color: white; padding: 14px 20px; border-radius: 50px; 
-          text-decoration: none; font-weight: bold; font-size:16px; 
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2); display:flex; align-items:center; gap:6px;">
-   💬 WhatsApp
-</a>
-
-  /* Footer */
+    /* Footer */
     footer { background: #111; color: #ccc; text-align: center; padding: 20px; margin-top: 50px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #222;
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+      nav ul.show { display: flex; }
+      nav ul li { margin: 10px 0; text-align: center; }
+      .menu-toggle { display: block; }
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 1rem; }
+      .steps { flex-direction: column; }
+      .step { width: 100%; }
+      .contact-buttons { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
@@ -120,6 +128,7 @@
   <!-- Navigation -->
   <nav>
     <h2>NKElectronics 9665345409</h2>
+    <button class="menu-toggle">☰</button>
     <ul>
       <li><a href="#home">Home</a></li>
       <li><a href="#services">Services</a></li>
@@ -137,11 +146,9 @@
     <a href="#services" class="btn btn-secondary">View Services</a>
   </header>
 
-
   <!-- Services Section -->
   <section id="services">
     <h2>Our Services</h2>
-
     <h3>Electronics Repair</h3>
     <div class="grid">
       <div class="card"><img src="images/tv repair.jpg"><h4>TV Repair</h4></div>
@@ -150,7 +157,6 @@
       <div class="card"><img src="images/Homeappliance.jpg"><h4>Appliances Repair</h4></div>
       <div class="card"><img src="images/water furifier.jpg"><h4>Water purifier</h4></div>
     </div>
-
     <h3>Electrical Services</h3>
     <div class="grid">
       <div class="card"><img src="images/Repair logo.jpg"><h4>Wiring & Rewiring</h4></div>
@@ -172,16 +178,15 @@
   </section>
 
   <!-- About Section -->
-<section id="about">
-  <h2>Why Choose Us?</h2>
-  <div class="grid">
-    <div class="card"><h4>✅ Certified Technicians</h4><p>Trusted experts with years of experience.</p></div>
-    <div class="card"><h4>✅ Affordable Pricing</h4><p>Clear & transparent charges.</p></div>
-    <div class="card"><h4>✅ Doorstep Service</h4><p>We come to your home or office.</p></div>
-    <div class="card"><h4>✅ 24/7 Support</h4><p>Emergency repair anytime, anywhere.</p></div>
-  </div>
-</section>
-
+  <section id="about">
+    <h2>Why Choose Us?</h2>
+    <div class="grid">
+      <div class="card"><h4>✅ Certified Technicians</h4><p>Trusted experts with years of experience.</p></div>
+      <div class="card"><h4>✅ Affordable Pricing</h4><p>Clear & transparent charges.</p></div>
+      <div class="card"><h4>✅ Doorstep Service</h4><p>We come to your home or office.</p></div>
+      <div class="card"><h4>✅ 24/7 Support</h4><p>Emergency repair anytime, anywhere.</p></div>
+    </div>
+  </section>
 
   <!-- Testimonials -->
   <section id="testimonials">
@@ -194,50 +199,18 @@
   </section>
 
   <!-- Contact -->
-  <!-- Contact -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <div class="contact-form">
+  <section id="contact">
+    <h2>Contact Us</h2>
     <p>📞 Call us: <a href="tel:+919665345409" style="color:#2563eb; font-weight:bold;">+91 96653 45409</a></p>
-    <br>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; margin-top:20px;">
-
-      <!-- Call Button -->
-      <a href="tel:+919665345409" 
-         style="background:#2563eb; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         📞 Call Now
-      </a>
-
-      <!-- WhatsApp Button -->
-      <a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" 
-         target="_blank"
-         style="background:#25D366; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         💬 WhatsApp
-      </a>
-
-      <!-- SMS Button -->
-      <a href="sms:+919665345409?body=Hello!%20I%20need%20repair%20service" 
-         style="background:#ff9800; color:white; padding:14px 25px; border-radius:40px; 
-                text-decoration:none; font-weight:bold; font-size:16px; display:flex; align-items:center; gap:8px;">
-         📩 Send SMS
-      </a>
-
+    <div class="contact-buttons">
+      <a href="tel:+919665345409" class="btn-call">📞 Call Now</a>
+      <a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" target="_blank" class="btn-wa">💬 WhatsApp</a>
+      <a href="sms:+919665345409?body=Hello!%20I%20need%20repair%20service" class="btn-sms">📩 Send SMS</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" 
-   target="_blank"
-   style="position: fixed; bottom: 20px; right: 20px; background: #25D366; 
-          color: white; padding: 14px 20px; border-radius: 50px; 
-          text-decoration: none; font-weight: bold; font-size:16px; 
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2); display:flex; align-items:center; gap:6px;">
-   💬 WhatsApp
-</a>
-
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/919665345409?text=Hello!%20I%20need%20repair%20service" target="_blank" class="float-wa">💬 WhatsApp</a>
 
   <!-- Footer -->
   <footer>
@@ -245,5 +218,14 @@
     <p>Made with ❤️ for reliable repair services</p>
   </footer>
 
+  <!-- Script for menu toggle -->
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
+
